@@ -11,7 +11,6 @@ public abstract class BasicTree implements IStructures {
 		super();
 		tamanho = 0;
 		rootNode = null;
-		
 	}
 
 	public int getTamanho() {

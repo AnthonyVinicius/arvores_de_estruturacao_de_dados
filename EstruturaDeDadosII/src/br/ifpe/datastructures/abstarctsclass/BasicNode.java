@@ -1,16 +1,16 @@
 package br.ifpe.datastructures.abstarctsclass;
 
-public abstract class BasicNode {
+import br.ifpe.interfaces.IStructures;
+
+public abstract class BasicNode implements IStructures{
 	
 	private BasicNode leftSon;
 	private BasicNode rightSon;
 	private BasicNode father;
 	private String binaryCode;
-	private Integer value;
 	
-	public BasicNode(Integer value) {
+	public BasicNode() {
 		super();
-		this.value = value;
 	}
 
 	public BasicNode getLeftSon() {
@@ -43,13 +43,5 @@ public abstract class BasicNode {
 
 	public void setBinaryCode(String binaryCode) {
 		this.binaryCode = binaryCode;
-	}
-
-	public Integer getValue() {
-		return value;
-	}
-
-	public void setValue(Integer value) {
-		this.value = value;
 	}
 }
