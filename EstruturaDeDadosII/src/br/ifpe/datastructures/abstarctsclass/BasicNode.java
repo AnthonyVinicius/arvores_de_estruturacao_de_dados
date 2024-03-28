@@ -1,4 +1,4 @@
-package br.ifpe.datastructures.abstarctclass;
+package br.ifpe.datastructures.abstarctsclass;
 
 public abstract class BasicNode {
 	
