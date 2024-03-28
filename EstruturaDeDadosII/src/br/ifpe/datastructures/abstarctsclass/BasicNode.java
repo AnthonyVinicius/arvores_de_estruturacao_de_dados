@@ -1,8 +1,6 @@
 package br.ifpe.datastructures.abstarctsclass;
 
-import br.ifpe.interfaces.IStructures;
-
-public abstract class BasicNode implements IStructures{
+public abstract class BasicNode {
 	
 	private BasicNode leftSon;
 	private BasicNode rightSon;
