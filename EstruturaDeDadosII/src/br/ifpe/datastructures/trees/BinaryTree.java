@@ -6,6 +6,10 @@ import br.ifpe.datastructures.node.BinaryNode;
 public class BinaryTree extends BasicTree {
 	
 	private BinaryNode rootNode;
+	
+	public BinaryTree() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public BinaryTree(BinaryNode rootNode) {
 	}
