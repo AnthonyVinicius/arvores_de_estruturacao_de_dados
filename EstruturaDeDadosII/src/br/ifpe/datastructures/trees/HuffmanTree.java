@@ -19,6 +19,7 @@ public class HuffmanTree extends BasicTree {
 		if (root == null) {
 			return newNode;
 		}
+		
 		if(newNode.getFrequency() < root.getFrequency()) {
 			root.setLeftSon(addNodeRecursively((HuffmanNode)root.getLeftSon(), newNode));
 		} else {

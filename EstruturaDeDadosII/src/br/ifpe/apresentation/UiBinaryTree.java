@@ -12,7 +12,7 @@ public class UiBinaryTree {
 
 		Scanner scanner = new Scanner(System.in);
 	    
-	    System.out.println("[1] - add(int Value): \n[2] - get(int Value):");
+	    System.out.println("_____________Árvore Bínaria__________\n[1] - add(int Value): \n[2] - get(int Value): \n[3]Back Menu");
 	    String input = scanner.nextLine();
 
 	    switch (input) {
@@ -27,6 +27,10 @@ public class UiBinaryTree {
 	            binaryTree.getNode(value);
 	            break;
 	        }
+	        case "3": {
+				UiMenu.ui();
+				break;
+			}
 	        default:
 	            System.out.println("A entrada: " + input + "é invalida");
 	            break;
