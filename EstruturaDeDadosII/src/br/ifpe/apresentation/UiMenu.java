@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class Apresentation {
+public class UiMenu {
 	
 
 	public static void ui() {
