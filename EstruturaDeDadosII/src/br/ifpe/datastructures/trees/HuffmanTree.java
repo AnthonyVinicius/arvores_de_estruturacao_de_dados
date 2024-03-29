@@ -29,7 +29,29 @@ public class HuffmanTree extends BasicTree {
 	}
 	
 	private String findNodePath(HuffmanNode root, String value) {
-		return null;
+		//armazena o caminho
+		StringBuilder path = new StringBuilder();
+		
+		//percorre árvore
+		while(root != null && !root.getValue().equals(value)) {
+			path.append(root.getValue()).append(" -> ");
+			
+			//se o valor for menor que o valor da raiz, va para a esquerda
+			if(value.compareTo(root.getValue()) < 0) {
+				root  = (HuffmanNode)root.getLeftSon();
+			} else {
+				root = (HuffmanNode)root.getRightSon();
+			}
+		}
+		
+		//caso o nó for encontrado, mostra uma mensagem com o caminho
+		if(root != null && root.getValue().equals(value)) {
+			path.append(" Nó encontrado: ").append(value);
+			return path.toString();
+		}
+		
+		//caso nao encontrar o nó, lança exceção com mensagem
+		throw new NullPointerException("O nó " + value + "não foi encontrado na árvore");
 	}
 	
 	@Override
