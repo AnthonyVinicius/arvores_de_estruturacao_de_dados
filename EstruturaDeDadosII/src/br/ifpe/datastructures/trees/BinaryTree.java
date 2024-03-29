@@ -4,44 +4,71 @@ import br.ifpe.datastructures.abstarctsclass.BasicTree;
 import br.ifpe.datastructures.node.BinaryNode;
 
 public class BinaryTree extends BasicTree {
-	
+
 	private BinaryNode rootNode;
-	
+
 	public BinaryTree() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	private void printNodePath(Integer value) {
-	    BinaryNode tempNo = rootNode;
-	    StringBuilder path = new StringBuilder(); // Para armazenar o caminho
-
-	    while (tempNo != null) {
-	        path.append(tempNo.getValue()).append(" -> "); // Adiciona o valor atual ao caminho
-
-	        if (tempNo.getValue() < value) {
-	            tempNo = tempNo.getLeftSon();
-	        } else if (tempNo.getValue() > value) {
-	            tempNo = tempNo.getRightSon();
-	        } else {
-	            // Encontrou o nó com o valor desejado, imprime o caminho e retorna
-	            path.append(value);
-	            System.out.println("Caminho até o nó " + value + ": " + path.toString());
-	            return;
-	        }
+	private BinaryNode adicionarRecursivamente(BinaryNode raiz, BinaryNode newNode) {
+	    if (raiz == null) {
+	        return newNode;
 	    }
-	    throw new NullPointerException("O valor : " + value + "não foi encontrado");
+
+	    if (newNode.getValue() < raiz.getValue()) {
+	        raiz.setLeftSon(adicionarRecursivamente((BinaryNode) raiz.getLeftSon(), newNode));
+	    } else {
+	        raiz.setRightSon(adicionarRecursivamente((BinaryNode) raiz.getRightSon(), newNode));
+	    }
+
+	    return raiz;
 	}
+	
+
+	private String printNodePath(Integer value) {
+		BinaryNode tempNo = rootNode;
+		String caminho = "";
+		
+		while (tempNo != null) {
+			caminho += tempNo.getValue() + " -> ";
+
+			if (tempNo.getValue() < value) {
+				tempNo = (BinaryNode) tempNo.getLeftSon();
+			} else if (tempNo.getValue() > value) {
+				tempNo = (BinaryNode) tempNo.getRightSon();
+			} else {
+				// Encontrou o nó com o valor desejado, imprime o caminho e retorna
+				caminho += "| Nó encontrado: " + value;
+				return caminho;
+			}
+		}
+		throw new NullPointerException("O valor : " + value + "não foi encontrado");
+	}
+	
+	
 
 	@Override
 	public String addNode(String value, String occurrence) {
-		// TODO Auto-generated method stub
-		return null;
+	    try {
+	        Integer intValue = Integer.parseInt(value);
+	        BinaryNode newNode = new BinaryNode(intValue);
+	        rootNode = adicionarRecursivamente(rootNode, newNode);
+	        return null;
+	    } catch (Exception e) {
+	        throw new IllegalArgumentException("Valor fornecido não é válido");
+	    }
 	}
 
 	@Override
 	public String getNode(String value) {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+			Integer intValue = Integer.parseInt(value);
+			return printNodePath(intValue);
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new IllegalArgumentException("Valor fornecido não é valido");
+		}
 	}
-
 }
