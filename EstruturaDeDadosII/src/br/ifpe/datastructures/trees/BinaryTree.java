@@ -1,10 +1,14 @@
 package br.ifpe.datastructures.trees;
 
 import br.ifpe.datastructures.abstarctsclass.BasicTree;
+import br.ifpe.datastructures.node.BinaryNode;
 
 public class BinaryTree extends BasicTree {
 	
-	private BinaryTree rootNode;
+	private BinaryNode rootNode;
+
+	public BinaryTree(BinaryNode rootNode) {
+	}
 
 	@Override
 	public String addNode(String value, String occurrence) {
