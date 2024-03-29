@@ -10,9 +10,8 @@ public class BinaryTree extends BasicTree {
 	public BinaryTree() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public BinaryTree(BinaryNode rootNode) {
-	}
+	
+	
 
 	@Override
 	public String addNode(String value, String occurrence) {

@@ -20,16 +20,16 @@ public class UiBinaryTree {
 	            System.out.println("Elemento :");
 	            String value = scanner.nextLine();
 	            binaryTree.addNode(value, null);
-	            break; // Adicionado o break aqui
+	            break;
 	        }
 	        case "2": {
 	            String value = scanner.nextLine();
 	            binaryTree.getNode(value);
-	            break; // Adicionado o break aqui
+	            break;
 	        }
 	        default:
 	            System.out.println("A entrada: " + input + "é invalida");
-	            break; // Adicionado o break aqui
+	            break;
 	    }
 
 	    manipularBinaryTree(); // Loop

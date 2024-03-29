@@ -21,16 +21,16 @@ public class UiHuffmanTree {
 	            System.out.println("Ocorrencia :");
 	            String occurrence = scanner.nextLine();
 	            huffamanTree.addNode(value, occurrence); 
-	            break; // Adicionado o break aqui
+	            break;
 	        }
 	        case "2": {
 	            String value = scanner.nextLine();
 	            huffamanTree.getNode(value);
-	            break; // Adicionado o break aqui
+	            break;
 	        }
 	        default:
 	            System.out.println("A entrada: " + input + " é invalida");
-	            break; // Adicionado o break aqui
+	            break;
 	    }
 
 	    manipularHuffmanTree(); // Loop
