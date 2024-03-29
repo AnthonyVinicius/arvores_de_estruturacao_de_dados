@@ -13,7 +13,7 @@ public class UiHuffmanTree {
 	
 		while (true){
 			
-			System.out.println("_____________Árvore de Huffman__________\n[1] - add(String): \n[2] - get(Value: ) \n[3]Back Menu");
+			System.out.println("_____________Árvore de Huffman__________\n[1] - add(String): \n[2] - get(Value: ) \n[3] - Back Menu");
 			String input = scanner.nextLine();
 			
 			switch (input) {

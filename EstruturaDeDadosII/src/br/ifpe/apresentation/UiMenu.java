@@ -7,10 +7,12 @@ public class UiMenu {
 
 	public static void ui() {
 		Scanner scanner = new Scanner(System.in);
+		
+		boolean on_off = true;
+		
+		while (on_off) {
 
-		while (true) {
-
-			System.out.println("[1] - Arvore Binaria / [2] - Arvore Huffman");
+			System.out.println("[1] - Arvore Binaria \n[2] - Arvore Huffman \n[3] - Close app");
 			String input = scanner.nextLine();
 
 			switch (input) {
@@ -20,6 +22,11 @@ public class UiMenu {
 
 			case "2": {
 				UiHuffmanTree.manipularHuffmanTree();
+			}
+			
+			case "3": {
+				on_off = false;
+				break;
 			}
 
 			default:

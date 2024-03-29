@@ -12,7 +12,7 @@ public class UiBinaryTree {
 
 		Scanner scanner = new Scanner(System.in);
 	    
-	    System.out.println("_____________Árvore Bínaria__________\n[1] - add(int Value): \n[2] - get(int Value): \n[3]Back Menu");
+	    System.out.println("_____________Árvore Bínaria__________\n[1] - add(int Value): \n[2] - get(int Value): \n[3] - Back Menu");
 	    String input = scanner.nextLine();
 
 	    switch (input) {
