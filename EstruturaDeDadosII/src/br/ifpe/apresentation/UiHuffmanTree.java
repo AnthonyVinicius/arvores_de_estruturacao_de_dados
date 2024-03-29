@@ -26,6 +26,7 @@ public class UiHuffmanTree {
 				break;
 			}
 			case "2": {
+				System.out.println("Valor: ");
 				String value = scanner.nextLine();
 				huffmanTree.getNode(value);
 				break;
