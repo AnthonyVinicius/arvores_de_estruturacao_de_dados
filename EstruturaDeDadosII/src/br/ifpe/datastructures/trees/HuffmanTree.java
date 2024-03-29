@@ -1,37 +1,43 @@
 package br.ifpe.datastructures.trees;
 
 import br.ifpe.datastructures.abstarctsclass.BasicTree;
+import br.ifpe.datastructures.node.BinaryNode;
 import br.ifpe.datastructures.node.HuffmanNode;
 
 public class HuffmanTree extends BasicTree {
 
-	private String rootNode;
-
+	private HuffmanNode rootNode;
+	
 	HuffmanNode node = new HuffmanNode();
 	
 	public HuffmanTree() {
 		// TODO Auto-generated constructor stub
+		rootNode = null;
 	}
 
+	private HuffmanNode addNodeRecursively(HuffmanNode root, HuffmanNode newNode) {
+		if (root == null) {
+			return newNode;
+		}
+		if(newNode.getFrequency() < root.getFrequency()) {
+			root.setLeftSon(addNodeRecursively((HuffmanNode)root.getLeftSon(), newNode));
+		} else {
+			root.setRightSon(addNodeRecursively((HuffmanNode)root.getRightSon(), newNode));
+		}
+		
+		return root;
+	}
+	
 	@Override
 	public String addNode(String value, String occurrence) {
-		return null;
+		try {
+			int IntOccurrence = Integer.parseInt(occurrence);
+			HuffmanNode newNode = new HuffmanNode(value, IntOccurrence);
+			rootNode = addNodeRecursively(rootNode, newNode);
+			return null;
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("A ocorrência fornecida não é valida");
 		}
-	
-	
-	public String addNode(String value, int occurence) {
-		
-		if(rootNode == null) {
-		
-			rootNode = value;
-			
-		}else {
-			node.setValue(value);
-			node.setFather(node);
-			
-		}
-		
-		return null;
 	}
 	
 	
