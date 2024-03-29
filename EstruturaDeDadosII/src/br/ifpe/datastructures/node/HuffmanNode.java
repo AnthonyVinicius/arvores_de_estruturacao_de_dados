@@ -1,19 +1,11 @@
 package br.ifpe.datastructures.node;
 
-import br.ifpe.interfaces.IStructures;
+import br.ifpe.datastructures.abstarctsclass.BasicNode;
 
-public class HuffmanNode implements IStructures {
+public class HuffmanNode extends BasicNode {
 
-	@Override
-	public String addNode(String value, String occurrence) {
-		// TODO Auto-generated method stub
-		return null;
+	public HuffmanNode() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	public String getNode(String value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
