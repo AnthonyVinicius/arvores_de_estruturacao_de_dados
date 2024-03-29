@@ -28,6 +28,10 @@ public class HuffmanTree extends BasicTree {
 		return root;
 	}
 	
+	private String findNodePath(HuffmanNode root, String value) {
+		return null;
+	}
+	
 	@Override
 	public String addNode(String value, String occurrence) {
 		try {
@@ -43,7 +47,10 @@ public class HuffmanTree extends BasicTree {
 	
 	@Override
 	public String getNode(String value) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return findNodePath(rootNode, value);
+		} catch (Exception e) {
+			throw new IllegalArgumentException("A string fornecida não é valida.");
+		}
 	}
 }
