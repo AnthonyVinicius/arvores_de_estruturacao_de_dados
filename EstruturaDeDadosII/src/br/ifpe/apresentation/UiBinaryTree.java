@@ -17,12 +17,13 @@ public class UiBinaryTree {
 
 	    switch (input) {
 	        case "1": {
-	            System.out.println("Elemento :");
+	            System.out.println("Adicionar elemento :");
 	            String value = scanner.nextLine();
 	            binaryTree.addNode(value, null);
 	            break;
 	        }
 	        case "2": {
+	        	System.out.println("Buscar elemento :");
 	            String value = scanner.nextLine();
 	            binaryTree.getNode(value);
 	            break;
