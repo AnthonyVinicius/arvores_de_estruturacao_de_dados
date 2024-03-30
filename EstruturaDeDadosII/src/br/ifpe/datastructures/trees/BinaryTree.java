@@ -5,7 +5,7 @@ import br.ifpe.datastructures.node.BinaryNode;
 
 public class BinaryTree extends BasicTree {
 
-	private BinaryNode rootNode;
+	private BinaryNode rootNode = (BinaryNode) getRootNode();
 
 	public BinaryTree() {
 		rootNode = null;
@@ -32,11 +32,14 @@ public class BinaryTree extends BasicTree {
 	    StringBuilder path = new StringBuilder(); // Para armazenar o caminho
 
 	    while (tempNo != null) {
-	        path.append(tempNo.getValue()).append(" -> "); // Adiciona o valor atual ao caminho
+	    	System.out.println("While: " + tempNo.getValue());
+	    	path.append(tempNo.getValue()).append(" -> "); // Adiciona o valor atual ao caminho
 
 	        if (tempNo.getValue() < value) {
+	        	System.out.println(tempNo.getValue());
 	            tempNo = (BinaryNode) tempNo.getRightSon();
 	        } else if (tempNo.getValue() > value) {
+	        	System.out.println(tempNo.getValue());
 	            tempNo = (BinaryNode) tempNo.getLeftSon();
 	        } else {
 	            // Encontrou o nó com o valor desejado, imprime o caminho e retorna
@@ -58,6 +61,7 @@ public class BinaryTree extends BasicTree {
 			Integer intValue = Integer.parseInt(value);
 			rootNode = adicionarRecursivamente(rootNode, intValue);
 			return intValue + " Valor adicionado";
+			
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("Valor fornecido não é válido.");
 		}
@@ -68,6 +72,7 @@ public class BinaryTree extends BasicTree {
 		try {
 			Integer intValue = Integer.parseInt(value);
 			return printNodePath(intValue);
+			
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("Valor fornecido não é válido.");
 		}
