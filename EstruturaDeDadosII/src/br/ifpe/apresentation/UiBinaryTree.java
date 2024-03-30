@@ -19,13 +19,13 @@ public class UiBinaryTree {
 	        case "1": {
 	            System.out.println("Adicionar elemento :");
 	            String value = scanner.nextLine();
-	            binaryTree.addNode(value, null);
+	            System.out.println(binaryTree.addNode(value, null));
 	            break;
 	        }
 	        case "2": {
 	        	System.out.println("Buscar elemento :");
 	            String value = scanner.nextLine();
-	            binaryTree.getNode(value);
+	            System.out.println(binaryTree.getNode(value));
 	            break;
 	        }
 	        case "3": {
