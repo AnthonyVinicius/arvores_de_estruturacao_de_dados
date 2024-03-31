@@ -29,29 +29,27 @@ public class BinaryTree extends BasicTree {
 	
 	private String printNodePath(Integer value) {
 	    BinaryNode tempNo = rootNode;
+	    String binaryCode = "";
 	    StringBuilder path = new StringBuilder(); // Para armazenar o caminho
 
 	    while (tempNo != null) {
-	    	System.out.println("While: " + tempNo.getValue());
-	    	path.append(tempNo.getValue()).append(" -> "); // Adiciona o valor atual ao caminho
+	    	path.append(tempNo.getValue()).append(" -> ");
 
 	        if (tempNo.getValue() < value) {
-	        	System.out.println(tempNo.getValue());
+	        	binaryCode += "1";
 	            tempNo = (BinaryNode) tempNo.getRightSon();
+	            
 	        } else if (tempNo.getValue() > value) {
-	        	System.out.println(tempNo.getValue());
+	        	binaryCode += "0";
 	            tempNo = (BinaryNode) tempNo.getLeftSon();
+	            
 	        } else {
-	            // Encontrou o nó com o valor desejado, imprime o caminho e retorna
 	            path.append(value);
-	            System.out.println("Caminho até o nó " + value + ": " + path.toString());
-	            return "Caminho até o nó " + value + ": " + path.toString();
+	            return "Caminho até o nó " + value + ": " + path.toString() + "\nBinary Code: " + binaryCode;
 	        }
 	    }
 
-	    // Se o valor não foi encontrado, imprime uma mensagem
-	    System.out.println("Valor " + value + " não encontrado na árvore.");
-	    return "Caminho até o nó " + value + ": " + path.toString();
+	    return "Valor não encontrado";
 	}
 	
 
