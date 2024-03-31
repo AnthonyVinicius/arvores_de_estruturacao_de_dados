@@ -44,7 +44,6 @@ public class BinaryTree extends BasicTree {
 	            tempNo = (BinaryNode) tempNo.getLeftSon();
 	            
 	        } else {
-	            path.append(value);
 	            return "Caminho até o nó " + value + ": " + path.toString() + "\nBinary Code: " + binaryCode;
 	        }
 	    }
