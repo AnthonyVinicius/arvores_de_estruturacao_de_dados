@@ -5,10 +5,10 @@ import java.util.Scanner;
 import br.ifpe.datastructures.trees.BinaryTree;
 
 public class UiBinaryTree {
+	static BinaryTree binaryTree = new BinaryTree();
 	
 	
 	public static void manipularBinaryTree() {
-		BinaryTree binaryTree = new BinaryTree();
 
 		Scanner scanner = new Scanner(System.in);
 	    
