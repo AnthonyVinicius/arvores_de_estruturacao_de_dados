@@ -9,7 +9,7 @@ public class UiMenu {
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
-
+			
 			System.out.println("[1] - Arvore Binaria \n[2] - Arvore Huffman");
 			String input = scanner.nextLine();
 
