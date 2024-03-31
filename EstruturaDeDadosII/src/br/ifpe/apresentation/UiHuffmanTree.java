@@ -1,6 +1,5 @@
 package br.ifpe.apresentation;
 
-import java.util.Map;
 import java.util.Scanner;
 
 import br.ifpe.datastructures.trees.HuffmanTree;
@@ -19,14 +18,10 @@ public class UiHuffmanTree {
 
 			switch (input) {
 			case "1": {
-				System.out.println("Type the text to be encoded");
+				System.out.println("Digite o texto:");
 				String text = scanner.nextLine().trim();
-				Map<Character, String> codemap = huffmanTree.encode(text);
-
-				System.out.println("Character Huffman Codes:");
-				for (Map.Entry<Character, String> entry : codemap.entrySet()) {
-					System.out.println(entry.getKey() + ": " + entry.getValue());
-				}
+				System.out.println(huffmanTree.addNode(text));
+				break;
 			}
 			case "2": {
 				UiMenu.ui();

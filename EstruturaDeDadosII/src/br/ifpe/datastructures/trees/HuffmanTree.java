@@ -8,7 +8,7 @@ import br.ifpe.datastructures.abstarctsclass.BasicTree;
 import br.ifpe.datastructures.node.HuffmanNode;
 
 public class HuffmanTree extends BasicTree {
-	
+
 	public Map<Character, String> encode(String text) {
 		char[] letters = text.toCharArray();
 		Map<Character, Integer> frequencies = countFrequencies(letters);
@@ -31,9 +31,9 @@ public class HuffmanTree extends BasicTree {
 		}
 
 		while (nodes.size() > 1) {
-			HuffmanNode left = nodes.poll();
-			HuffmanNode right = nodes.poll();
-			HuffmanNode parent = new HuffmanNode(left, right);
+			HuffmanNode leftSon = nodes.poll();
+			HuffmanNode rightSon = nodes.poll();
+			HuffmanNode parent = new HuffmanNode(leftSon, rightSon);
 			nodes.offer(parent);
 		}
 		return nodes.poll();
@@ -49,20 +49,29 @@ public class HuffmanTree extends BasicTree {
 		if (node.isLeaf()) {
 			codemap.put(node.getCharacter(), code);
 		} else {
-			generateCodes(node.getLeft(), code + "0", codemap);
-			generateCodes(node.getRight(), code + "1", codemap);
+			generateCodes((HuffmanNode)node.getLeftSon(), code + "0", codemap);
+			generateCodes((HuffmanNode) node.getRightSon(), code + "1", codemap);
 		}
 	}
 
+
 	@Override
-	public String addNode(String value, String occurrence) {
-		// TODO Auto-generated method stub
-		return null;
+	public String addNode(String text) {
+
+		String result ="";
+		Map<Character, String> codemap = encode(text);
+
+		for (Map.Entry<Character, String> entry : codemap.entrySet()) {
+			result += entry.getKey() + ": " + entry.getValue()+"\n";	
+		}
+
+		System.out.println("Character Huffman Codes:");
+		return result;
 	}
+
 
 	@Override
 	public String getNode(String value) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

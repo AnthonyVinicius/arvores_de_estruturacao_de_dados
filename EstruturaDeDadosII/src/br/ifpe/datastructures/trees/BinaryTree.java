@@ -53,7 +53,7 @@ public class BinaryTree extends BasicTree {
 	
 
 	@Override
-	public String addNode(String value, String occurrence) {
+	public String addNode(String value) {
 		try {
 			Integer intValue = Integer.parseInt(value);
 			rootNode = adicionarRecursivamente(rootNode, intValue);
