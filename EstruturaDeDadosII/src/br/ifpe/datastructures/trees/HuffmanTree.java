@@ -1,79 +1,68 @@
 package br.ifpe.datastructures.trees;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 import br.ifpe.datastructures.abstarctsclass.BasicTree;
-import br.ifpe.datastructures.node.BinaryNode;
 import br.ifpe.datastructures.node.HuffmanNode;
 
 public class HuffmanTree extends BasicTree {
-
-	private HuffmanNode rootNode;
 	
-	HuffmanNode node = new HuffmanNode();
-	
-	public HuffmanTree() {
-		// TODO Auto-generated constructor stub
-		rootNode = null;
+	public Map<Character, String> encode(String text) {
+		char[] letters = text.toCharArray();
+		Map<Character, Integer> frequencies = countFrequencies(letters);
+		HuffmanNode root = buildTree(frequencies);
+		return generateCodes(root);
 	}
 
-	private HuffmanNode addNodeRecursively(HuffmanNode root, HuffmanNode newNode) {
-		if (root == null) {
-			return newNode;
+	private Map<Character, Integer> countFrequencies(char[] letters) {
+		Map<Character, Integer> count = new HashMap<>();
+		for (char ch : letters) {
+			count.put(ch, count.getOrDefault(ch, 0) + 1);
 		}
-		
-		if(newNode.getFrequency() < root.getFrequency()) {
-			root.setLeftSon(addNodeRecursively((HuffmanNode)root.getLeftSon(), newNode));
+		return count;
+	}
+
+	private HuffmanNode buildTree(Map<Character, Integer> frequencies) {
+		PriorityQueue<HuffmanNode> nodes = new PriorityQueue<>();
+		for (Map.Entry<Character, Integer> entry : frequencies.entrySet()) {
+			nodes.offer(new HuffmanNode(entry.getKey(), entry.getValue()));
+		}
+
+		while (nodes.size() > 1) {
+			HuffmanNode left = nodes.poll();
+			HuffmanNode right = nodes.poll();
+			HuffmanNode parent = new HuffmanNode(left, right);
+			nodes.offer(parent);
+		}
+		return nodes.poll();
+	}
+
+	private Map<Character, String> generateCodes(HuffmanNode root) {
+		Map<Character, String> codemap = new HashMap<>();
+		generateCodes(root, "", codemap);
+		return codemap;
+	}
+
+	private void generateCodes(HuffmanNode node, String code, Map<Character, String> codemap) {
+		if (node.isLeaf()) {
+			codemap.put(node.getCharacter(), code);
 		} else {
-			root.setRightSon(addNodeRecursively((HuffmanNode)root.getRightSon(), newNode));
+			generateCodes(node.getLeft(), code + "0", codemap);
+			generateCodes(node.getRight(), code + "1", codemap);
 		}
-		
-		return root;
 	}
-	
-	private String findNodePath(HuffmanNode root, String value) {
-		//armazena o caminho
-		StringBuilder path = new StringBuilder();
-		
-		//percorre árvore
-		while(root != null && !root.getValue().equals(value)) {
-			path.append(root.getValue()).append(" -> ");
-			
-			//se o valor for menor que o valor da raiz, va para a esquerda
-			if(value.compareTo(root.getValue()) < 0) {
-				root  = (HuffmanNode)root.getLeftSon();
-			} else {
-				root = (HuffmanNode)root.getRightSon();
-			}
-		}
-		
-		//caso o nó for encontrado, mostra uma mensagem com o caminho
-		if(root != null && root.getValue().equals(value)) {
-			path.append(" Nó encontrado: ").append(value);
-			return path.toString();
-		}
-		
-		//caso nao encontrar o nó, lança exceção com mensagem
-		throw new NullPointerException("O nó " + value + "não foi encontrado na árvore");
-	}
-	
+
 	@Override
 	public String addNode(String value, String occurrence) {
-		try {
-			int IntOccurrence = Integer.parseInt(occurrence);
-			HuffmanNode newNode = new HuffmanNode(value, IntOccurrence);
-			rootNode = addNodeRecursively(rootNode, newNode);
-			return null;
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException("A ocorrência fornecida não é valida");
-		}
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	
+
 	@Override
 	public String getNode(String value) {
-		try {
-			return findNodePath(rootNode, value);
-		} catch (Exception e) {
-			throw new IllegalArgumentException("A string fornecida não é valida.");
-		}
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

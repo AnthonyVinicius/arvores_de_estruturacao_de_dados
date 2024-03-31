@@ -2,37 +2,47 @@ package br.ifpe.datastructures.node;
 
 import br.ifpe.datastructures.abstarctsclass.BasicNode;
 
-public class HuffmanNode extends BasicNode {
+public class HuffmanNode extends BasicNode implements Comparable<HuffmanNode> {
 	
-	private String value;
+	private char character;
 	private int frequency;
-	
-	
-	public HuffmanNode() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public HuffmanNode(String value, int frequency) {
-		super();
-		this.value = value;
+	private HuffmanNode left;
+	private HuffmanNode right;
+
+	public HuffmanNode(char character, int frequency) {
+		this.character = character;
 		this.frequency = frequency;
-		
 	}
 
-	public String getValue() {
-		return value;
+	public HuffmanNode(HuffmanNode left, HuffmanNode right) {
+		this.left = left;
+		this.right = right;
+		this.frequency = left.getFrequency() + right.getFrequency();
 	}
-	
-	public void setValue(String value) {
-		this.value = value;
+
+	public char getCharacter() {
+		return character;
 	}
-	
+
 	public int getFrequency() {
 		return frequency;
 	}
-	
-	public void setFrequency(int frequency) {
-		this.frequency = frequency;
+
+	public boolean isLeaf() {
+		return left == null && right == null;
+	}
+
+	public HuffmanNode getLeft() {
+		return left;
+	}
+
+	public HuffmanNode getRight() {
+		return right;
+	}
+
+	@Override
+	public int compareTo(HuffmanNode o) {
+		return frequency - o.frequency;
 	}
 
 }
