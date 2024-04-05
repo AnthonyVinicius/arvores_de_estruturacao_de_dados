@@ -9,11 +9,11 @@ import br.ifpe.datastructures.node.HuffmanNode;
 
 public class HuffmanTree extends BasicTree {
 
-	public Map<Character, String> encode(String text) {
+	private Map<Character, String> encode(String text) {
 		char[] letters = text.toCharArray();
 		Map<Character, Integer> frequencies = countFrequencies(letters);
 		HuffmanNode root = buildTree(frequencies);
-		return generateCodes(root);
+		return generateMapCodes(root);
 	}
 
 	private Map<Character, Integer> countFrequencies(char[] letters) {
@@ -26,6 +26,7 @@ public class HuffmanTree extends BasicTree {
 
 	private HuffmanNode buildTree(Map<Character, Integer> frequencies) {
 		PriorityQueue<HuffmanNode> nodes = new PriorityQueue<>();
+		
 		for (Map.Entry<Character, Integer> entry : frequencies.entrySet()) {
 			nodes.offer(new HuffmanNode(entry.getKey(), entry.getValue()));
 		}
@@ -39,7 +40,7 @@ public class HuffmanTree extends BasicTree {
 		return nodes.poll();
 	}
 
-	private Map<Character, String> generateCodes(HuffmanNode root) {
+	private Map<Character, String> generateMapCodes(HuffmanNode root) {
 		Map<Character, String> codemap = new HashMap<>();
 		generateCodes(root, "", codemap);
 		return codemap;
@@ -65,8 +66,7 @@ public class HuffmanTree extends BasicTree {
 			result += entry.getKey() + ": " + entry.getValue()+"\n";	
 		}
 
-		System.out.println("Character Huffman Codes:");
-		return result;
+		return "\nCharacter Huffman Codes:" + result;
 	}
 
 

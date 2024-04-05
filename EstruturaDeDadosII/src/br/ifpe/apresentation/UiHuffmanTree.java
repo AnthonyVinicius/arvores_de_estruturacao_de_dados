@@ -20,7 +20,7 @@ public class UiHuffmanTree {
 				switch (input) {
 				case "1": {
 					System.out.println("Digite o texto:");
-					String text = scanner.nextLine().trim();
+					String text = scanner.nextLine().trim();//remove qualquer espaço no começo e final da frase;
 					System.out.println(huffmanTree.addNode(text));
 					break;
 				}
