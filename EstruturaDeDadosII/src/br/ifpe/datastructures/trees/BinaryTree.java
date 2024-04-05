@@ -35,11 +35,11 @@ public class BinaryTree extends BasicTree {
 	    while (tempNo != null) {
 	    	path.append(tempNo.getValue()).append(" -> ");
 
-	        if (tempNo.getValue() < value) {
+	        if (value > tempNo.getValue()) {
 	        	binaryCode += "1";
 	            tempNo = (BinaryNode) tempNo.getRightSon();
 	            
-	        } else if (tempNo.getValue() > value) {
+	        } else if (value < tempNo.getValue()) {
 	        	binaryCode += "0";
 	            tempNo = (BinaryNode) tempNo.getLeftSon();
 	            
