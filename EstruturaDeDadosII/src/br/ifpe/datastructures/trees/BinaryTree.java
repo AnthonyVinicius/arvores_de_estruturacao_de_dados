@@ -12,19 +12,19 @@ public class BinaryTree extends BasicTree {
 	}
 	
 	
-	private BinaryNode adicionarRecursivamente(BinaryNode raiz, Integer value) {
-	    if (raiz == null) {
+	private BinaryNode adicionarRecursivamente(BinaryNode node, Integer value) {
+	    if (node == null) {
 	        return new BinaryNode(value);
 	    }
 
-	    if (value < raiz.getValue()) {
-	        raiz.setLeftSon(adicionarRecursivamente((BinaryNode) raiz.getLeftSon(), value));
+	    if (value < node.getValue()) {
+	        node.setLeftSon(adicionarRecursivamente((BinaryNode) node.getLeftSon(), value));
 	        
 	    } else {
-	        raiz.setRightSon((adicionarRecursivamente((BinaryNode) raiz.getRightSon(), value)));
+	        node.setRightSon((adicionarRecursivamente((BinaryNode) node.getRightSon(), value)));
 	    }
 
-	    return raiz;
+	    return node;
 	}
 	
 	private String printNodePath(Integer value) {
